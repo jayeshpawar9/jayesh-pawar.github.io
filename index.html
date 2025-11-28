@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jayesh Pawar | DevOps Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --card: #0f172a;
+      --shadow: 0 18px 45px rgba(0,0,0,0.6);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+    }
+
+    header .name {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    header nav {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    header nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    header nav a:hover {
+      border-color: rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .hero {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 4vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #22c55e, #38bdf8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-tags {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border-radius: 999px;
+      font-size: 13px;
+      padding: 9px 16px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #22c55e, #16a34a);
+      color: #022c22;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-outline {
+      border-color: rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(52, 211, 153, 0.18), #020617 60%);
+      border-radius: 28px;
+      padding: 20px 20px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .metric {
+      padding: 10px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    .metric-label {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .metric-value {
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .metric-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .pipeline {
+      margin-top: 6px;
+      padding: 10px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(55, 65, 81, 0.9);
+      font-size: 11px;
+    }
+
+    .pipeline-steps {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pipeline-pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 1);
+      font-size: 10px;
+    }
+
+    main {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    section {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 18px 18px 16px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.45);
+    }
+
+    section h2 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    section > p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .section-header small {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 3px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      color: var(--muted);
+    }
+
+    .pill-strong {
+      border-color: rgba(34, 197, 94, 0.8);
+      background: var(--accent-soft);
+      color: #bbf7d0;
+    }
+
+    .timeline-item {
+      padding: 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .timeline-item h3 {
+      font-size: 13px;
+    }
+
+    .timeline-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .timeline-item ul {
+      margin-left: 16px;
+      margin-top: 3px;
+      font-size: 12px;
+      color: #d1d5db;
+    }
+
+    .timeline-item li + li {
+      margin-top: 2px;
+    }
+
+    .project {
+      padding: 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 13px;
+    }
+
+    .project-title {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .project-links {
+      margin-top: 4px;
+      font-size: 11px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .skills-columns {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .skill-group-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .contact-item {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px dashed rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      padding: 16px 0 0;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        border-radius: 20px;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card {
+        order: -1;
+      }
+      .grid-2,
+      .contact-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .skills-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header nav {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <div class="name">Jayesh Pawar</div>
+        <div style="font-size: 12px; color: var(--muted);">
+          DevOps Engineer · Cloud & CI/CD
+        </div>
+      </div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">
+          I build <span>reliable delivery pipelines</span> and cloud-native platforms.
+        </h1>
+        <p class="hero-subtitle">
+          DevOps engineer with <strong>6+ years</strong> of experience across CI/CD, containers,
+          Kubernetes, and AWS/Azure. I design pipelines, automate infra with IaC, and keep
+          systems observable and resilient.
+        </p>
+        <div class="hero-tags">
+          <span class="tag">CI/CD · Jenkins · GitHub Actions</span>
+          <span class="tag">Docker · Kubernetes</span>
+          <span class="tag">AWS · Azure</span>
+          <span class="tag">Terraform · Helm</span>
+          <span class="tag">Monitoring · Logging</span>
+        </div>
+        <div class="hero-actions">
+          <!-- update with your real links -->
+          <a class="btn btn-primary" href="#projects">
+            View DevOps Projects →
+          </a>
+          <a class="btn btn-outline" href="mailto:jayeshpawar1095@gmail.com">
+            Email Me
+          </a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/jayesh-pawar-428624136" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="DevOps metrics">
+        <h2>Delivery snapshot</h2>
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-label">Deploys / month</div>
+            <div class="metric-value">120+</div>
+            <div class="metric-hint">for microservices</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">MTTR</div>
+            <div class="metric-value">&lt; 15m</div>
+            <div class="metric-hint">with observability</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Infra as Code</div>
+            <div class="metric-value">100%</div>
+            <div class="metric-hint">Terraform / Helm</div>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.09em;">
+            Typical pipeline
+          </div>
+          <div class="pipeline-steps">
+            <span class="pipeline-pill">Git commit</span>
+            <span class="pipeline-pill">Jenkins / GitHub Actions</span>
+            <span class="pipeline-pill">Docker build & scan</span>
+            <span class="pipeline-pill">Helm deploy to K8s</span>
+            <span class="pipeline-pill">ArgoCD sync</span>
+            <span class="pipeline-pill">Prometheus / Grafana</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <section id="projects">
+        <div class="section-header">
+          <h2>Highlighted DevOps Projects</h2>
+          <small>What I actually built & automated</small>
+        </div>
+        <p>
+          These are practical, end-to-end projects demonstrating CI/CD, infrastructure as code,
+          containers, and observability. Each one is designed to be something I can walk through
+          in an interview, from architecture to failures handled.
+        </p>
+        <div class="grid-2">
+          <article class="project">
+            <div class="project-title">1. Production-like CI/CD on Kubernetes</div>
+            <div class="project-meta">Jenkins · Docker · Kubernetes · Helm · ArgoCD</div>
+            <p>
+              Designed a complete pipeline for a microservice app: build, test, Docker image,
+              security scan, Helm chart packaging, and deployment to a multi-env K8s cluster
+              using ArgoCD GitOps.
+            </p>
+            <ul style="margin-left: 16px; font-size: 12px; margin-top: 3px;">
+              <li>Blue/green & canary strategies for safe rollouts.</li>
+              <li>Automated rollback on failed health checks.</li>
+              <li>Secrets managed via Kubernetes secrets / external vault.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill pill-strong">Great to demo in interviews</span>
+              <span class="pill">Branch-based environments</span>
+              <span class="pill">GitOps</span>
+            </div>
+            <!-- Update these links -->
+            <div class="project-links">
+              <a href="https://github.com/jayeshpawar9/devops-k8s-cicd" target="_blank" rel="noreferrer">GitHub Repo</a>
+              <a href="#" target="_blank" rel="noreferrer">Architecture Diagram</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-title">2. AWS Infra as Code for 3-tier app</div>
+            <div class="project-meta">Terraform · AWS (VPC, EC2, ALB, RDS) · Ansible</div>
+            <p>
+              Built a reusable Terraform module to create a secure VPC, subnets, ALB,
+              auto-scaling group, and RDS. Used Ansible to configure application nodes and bootstrap monitoring agents.
+            </p>
+            <ul style="margin-left: 16px; font-size: 12px; margin-top: 3px;">
+              <li>Private subnets, security groups, and least-privilege IAM roles.</li>
+              <li>User data scripts for zero-touch config on instance launch.</li>
+              <li>Parameterised modules for different environments.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Terraform modules</span>
+              <span class="pill">ASG & ALB</span>
+              <span class="pill">Production-style networking</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/jayeshpawar9/aws-3tier-terraform" target="_blank" rel="noreferrer">GitHub Repo</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-title">3. Observability Stack for Microservices</div>
+            <div class="project-meta">Prometheus · Grafana · Loki · Alertmanager</div>
+            <p>
+              Deployed a full observability stack on Kubernetes to monitor application,
+              infrastructure, and deployment health with custom SLO dashboards and alerts.
+            </p>
+            <ul style="margin-left: 16px; font-size: 12px; margin-top: 3px;">
+              <li>Dashboards for latency, error rate, and saturation (RED/USE).</li>
+              <li>Alert rules integrated with email / Slack webhooks.</li>
+              <li>Log aggregation and correlation with deployments.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">SLO / SLI thinking</span>
+              <span class="pill">On-call friendly dashboards</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-title">4. DevEx: Self-Service Environments</div>
+            <div class="project-meta">GitHub Actions · Terraform · Templates</div>
+            <p>
+              Created reusable templates so developers can spin up preview environments
+              automatically from pull requests, with cleanup on merge/close.
+            </p>
+            <ul style="margin-left: 16px; font-size: 12px; margin-top: 3px;">
+              <li>Ephemeral infra with cost-saving automatic teardown.</li>
+              <li>Standardised CI workflows across repos.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Developer productivity</span>
+              <span class="pill">Cost optimisation</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="section-header">
+          <h2>Experience</h2>
+          <small>Highlights relevant to SRE / DevOps roles</small>
+        </div>
+        <div class="grid-2">
+          <article class="timeline-item">
+            <h3>Senior DevOps Engineer</h3>
+            <div class="timeline-meta">Company Name · 20XX – Present</div>
+            <ul>
+              <li>Owned CI/CD for X+ microservices using Jenkins/GitHub Actions and ArgoCD.</li>
+              <li>Containerised legacy apps with Docker and migrated workloads to Kubernetes.</li>
+              <li>Implemented infra as code with Terraform / Helm for repeatable environments.</li>
+            </ul>
+          </article>
+          <article class="timeline-item">
+            <h3>DevOps Engineer</h3>
+            <div class="timeline-meta">Company Name · 20XX – 20XX</div>
+            <ul>
+              <li>Set up centralised logging and monitoring using ELK/Prometheus/Grafana.</li>
+              <li>Helped reduce MTTR by improving alerting, runbooks, and dashboards.</li>
+              <li>Worked closely with developers on release automation and performance fixes.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-header">
+          <h2>Skills & Tools</h2>
+          <small>Tech I use day-to-day</small>
+        </div>
+        <div class="skills-columns">
+          <div>
+            <div class="skill-group-title">CI / CD</div>
+            <div class="pill-row">
+              <span class="pill">Jenkins</span>
+              <span class="pill">GitHub Actions</span>
+              <span class="pill">GitLab CI</span>
+              <span class="pill">ArgoCD</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group-title">Cloud</div>
+            <div class="pill-row">
+              <span class="pill">AWS</span>
+              <span class="pill">Azure</span>
+              <span class="pill">GCP (basic)</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group-title">Containers & IaC</div>
+            <div class="pill-row">
+              <span class="pill">Docker</span>
+              <span class="pill">Kubernetes</span>
+              <span class="pill">Helm</span>
+              <span class="pill">Terraform</span>
+              <span class="pill">Ansible</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group-title">Observability</div>
+            <div class="pill-row">
+              <span class="pill">Prometheus</span>
+              <span class="pill">Grafana</span>
+              <span class="pill">Loki / ELK</span>
+              <span class="pill">Alertmanager</span>
+            </div>
+          </div>
+        </div>
+        <div class="badge-row" style="margin-top: 10px;">
+          <span class="badge">Linux · Bash · Git</span>
+          <span class="badge">Networking basics</span>
+          <span class="badge">Security best practices</span>
+          <span class="badge">Cost optimisation</span>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-header">
+          <h2>Contact & Links</h2>
+          <small>Let’s talk about systems, pipelines, and reliability</small>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <p>
+              I’m open to roles in <strong>DevOps, Platform Engineering, Cloud Engineer, and SRE</strong>.
+              If you’d like a walkthrough of any project on this site, I’d be happy to share repo links,
+              pipelines, and architecture diagrams.
+            </p>
+            <p style="margin-top: 6px;">
+              📍 Location: Your City / Timezone  
+              🕒 Notice period: Your notice period info
+            </p>
+          </div>
+          <div class="contact-item">
+            <p><strong>Email</strong><br />
+              <a href="mailto:jayeshpawar1095@gmail.com">jayeshpawar1095@gmail.com</a>
+            </p>
+            <p style="margin-top: 6px;"><strong>LinkedIn</strong><br />
+              <a href="https://www.linkedin.com/in/jayesh-pawar-428624136" target="_blank" rel="noreferrer">
+                linkedin.com/in/jayesh-pawar-428624136
+              </a>
+            </p>
+            <p style="margin-top: 6px;"><strong>GitHub</strong><br />
+              <a href="https://github.com/jayeshpawar9" target="_blank" rel="noreferrer">
+                github.com/jayeshpawar9
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Jayesh Pawar · DevOps Engineer
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

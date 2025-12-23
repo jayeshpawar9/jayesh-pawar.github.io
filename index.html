@@ -407,6 +407,15 @@
       color: var(--muted);
     }
 
+    .cert-container {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
     footer {
       margin-top: 24px;
       font-size: 11px;
@@ -770,7 +779,28 @@
           <span class="badge">Cost optimisation</span>
         </div>
       </section>
-
+      <section id="certifications">
+        <div class="section-header">
+          <h2>Certifications & Achievements</h2>
+          <small>Professional certifications and technical achievements</small>
+        </div>
+        <div class="cert-container">
+          <a href="https://www.testdome.com/certificates/9ceaea695c034ac19737e0c00b1d1f11" class="testdome-certificate-stamp silver">
+            <span class="testdome-certificate-name">Jayesh Pawar</span>
+            <span class="testdome-certificate-test-name">Terraform</span>
+            <span class="testdome-certificate-card-logo">TestDome<br>Certificate</span>
+          </a>
+          <script>
+            var stylesheet = "https://www.testdome.com/content/certificates/embed.css";
+            link = document.createElement("link");
+            link.href = stylesheet;
+            link.type = "text/css";
+            link.rel = "stylesheet";
+            link.media = "screen,print";
+            document.getElementsByTagName("head")[0].appendChild(link);
+          </script>
+        </div>
+      </section>
       <section id="contact">
         <div class="section-header">
           <h2>Contact & Links</h2>
